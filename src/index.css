@@ -41,7 +41,8 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  background-color: #d097f1;
+  background-color: #919191;
+  font-weight: 600;
 }
 button:focus,
 button:focus-visible {
@@ -49,4 +50,14 @@ button:focus-visible {
 }
 .text_center {
   text-align: center;
+}
+checkbox {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: border-color 0.25s;
 }
