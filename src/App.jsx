@@ -8,7 +8,7 @@ import Checkout from './components/Checkout';
 
 function App() {
   const [cart, addCart] = useState([])
-  const [customerType, setCustomerType] = useState("Rewards Members")
+  const [customerType, setCustomerType] = useState("")
   const [currentProcess, setCurrentProcess] = useState("Shopping")
   const [cash, setCash] = useState(0.00)
 
@@ -16,9 +16,9 @@ function App() {
     <div className="App">
       <h1 className="text_center"> Jerry's Quick Mart </h1>
       <TypeClient customertype={customerType} setcustomer={setCustomerType}/>
-      <ListProducts cart={cart} addcart={addCart} customertype={customerType}/>
+      <ListProducts cart={cart} addcart={addCart} customertype={customerType} setcustomertype={setCustomerType}/>
       <ShoppingCart cart={cart} customertype={customerType}/>
-      <Checkout cart={cart} customertype={customerType}/>
+      <Checkout cart={cart} customertype={customerType} addcart={addCart}/>
 
     </div>
   )

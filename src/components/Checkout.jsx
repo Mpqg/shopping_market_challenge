@@ -1,6 +1,7 @@
+import "./Checkout.css"
 import { useState } from 'react'
 import listProducts from '../data/products.json'
-function Checkout({ cart, customertype }) {
+function Checkout({ cart, customertype, addcart }) {
     const [cash, setCash] = useState(0.00)
     const totalProducts = cart.reduce((acc, product) => {
         return acc + product.quantity
@@ -20,9 +21,12 @@ function Checkout({ cart, customertype }) {
             : 0
         return acc + (price * product.quantity)
     }, 0)
+    function emptycart() {
+        addcart([]);
+    }
     return (
         <div>
-            <h2 className="text_center">Shopping Cart</h2>
+            <h2 className="text_center">Checkout</h2>
             <table align='center'>
                 <thead>
                     <tr>
@@ -44,15 +48,17 @@ function Checkout({ cart, customertype }) {
                     })}
                 </tbody>
             </table>
+            <div className="text_center">
             <p>TOTAL NUMBER OF ITEMS SOLD: {totalProducts}</p>
             <p>SUB-TOTAL: $ {subtotal}</p>
             <p>TAX (6.5%):$ {tax}</p>
             <p>TOTAL: $ {subtotal + tax}</p>
-            <p>CASH: $ <input type="number" value={cash} onChange={(event) => setCash(event.target.value)}/></p>
+            <p>CASH: $ <input type="number" value={cash} onChange={(event) => setCash(event.target.value)} /></p>
             <p>CHANGE: $ {cash - (subtotal + tax)}</p>
             <p>YOU SAVED: $ {saving}</p>
-            <button>Checkout</button>
-            <button>Cancel</button>
+            <button className="checkout">Checkout</button>
+            <button onClick={emptycart}>Cancel</button>
+            </div>
         </div >
     )
 }

@@ -1,10 +1,13 @@
 import "./ListProducts.css"
 import Product from './Product'
 import listProducts from '../data/products.json'
-function ListProducts({ cart, addcart, customertype }) {
+function ListProducts({ cart, addcart, customertype, setcustomertype }) {
     const totalProducts = cart.reduce((acc, product) => {
         return acc + product.quantity
-    }, 0)
+    }, 0);
+function emptycart() {
+    addcart([]) && setcustomertype("");
+}
     return (
         <div>
             <h2 className="text_center">List of products</h2>
@@ -17,7 +20,8 @@ function ListProducts({ cart, addcart, customertype }) {
                         <th>PRICE</th>
                         <th>
                             <img src="/icons8-carrito-de-compras-30.png" alt="" />{totalProducts}
-                            <img className="emptycart" src="/trash.png" alt="" width={30} />
+                            <img className="emptycart" src="/trash.png" alt="" width={30} onClick={emptycart}/>
+
                         </th>
                     </tr>
                 </thead>

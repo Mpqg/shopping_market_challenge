@@ -1,4 +1,3 @@
-
 function ShoppingCart({ cart, customertype }) {
     const totalProducts = cart.reduce((acc, product) => {
         return acc + product.quantity
@@ -36,11 +35,13 @@ function ShoppingCart({ cart, customertype }) {
                     })}
                 </tbody>
             </table>
+            <div className="text_center">
             <p>TOTAL NUMBER OF ITEMS SOLD: {totalProducts}</p>
             <p>SUB-TOTAL: $ {subtotal}</p>
             <p>TAX (6.5%):$ {tax}</p>
             <p>TOTAL: $ {subtotal + tax}</p>
             <button>Proceed to Checkout</button>
+            </div>
         </div >
     )
 }
