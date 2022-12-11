@@ -1,0 +1,9 @@
+.emptycart {
+  margin-left: 10px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: 300ms;
+}
+.emptycart:hover {
+  opacity: 1;
+}

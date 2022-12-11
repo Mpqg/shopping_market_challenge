@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "photo":"/icons8-botella-de-leche-100.png",
+        "productName": "Milk",
+        "stock": 10,
+        "regularPrice": 2.00,
+        "memberPrice": 1.50,
+        "taxStatus": "Tax-Exempt"
+    },
+    {
+        "id": 2,
+        "photo":"/soda.png",
+        "productName": "Red Bull",
+        "stock": 10,
+        "regularPrice": 2.00,
+        "memberPrice": 4.00,
+        "taxStatus": "Taxable"
+    }
+]
