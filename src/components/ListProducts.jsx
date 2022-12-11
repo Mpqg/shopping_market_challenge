@@ -2,6 +2,9 @@ import "./ListProducts.css"
 import Product from './Product'
 import listProducts from '../data/products.json'
 function ListProducts({ cart, addcart, customertype }) {
+    const totalProducts = cart.reduce((acc, product) => {
+        return acc + product.quantity
+    }, 0)
     return (
         <div>
             <h2 className="text_center">List of products</h2>
@@ -13,7 +16,7 @@ function ListProducts({ cart, addcart, customertype }) {
                         <th>STOCK</th>
                         <th>PRICE</th>
                         <th>
-                            <img src="/icons8-carrito-de-compras-30.png" alt="" />{cart.length}
+                            <img src="/icons8-carrito-de-compras-30.png" alt="" />{totalProducts}
                             <img className="emptycart" src="/trash.png" alt="" width={30} />
                         </th>
                     </tr>

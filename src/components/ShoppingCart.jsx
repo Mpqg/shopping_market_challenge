@@ -1,5 +1,17 @@
 
 function ShoppingCart({ cart, customertype }) {
+    const totalProducts = cart.reduce((acc, product) => {
+        return acc + product.quantity
+    }, 0)
+    const subtotal = cart.reduce((acc, product) => {
+        const price = customertype === "Rewards Members" ? product.memberPrice : product.regularPrice
+        return acc + (price * product.quantity)
+    }, 0)
+    const tax = cart.reduce((acc, product) => {
+        const price = customertype === "Rewards Members" ? product.memberPrice : product.regularPrice
+        const istaxable = product.taxStatus === "Taxable"
+        return acc + (price * product.quantity * 0.065 * istaxable)
+    }, 0)
     return (
         <div>
             <h2 className="text_center">Shopping Cart</h2>
@@ -24,10 +36,10 @@ function ShoppingCart({ cart, customertype }) {
                     })}
                 </tbody>
             </table>
-            <p>TOTAL NUMBER OF ITEMS SOLD: 6</p>
-            <p>SUB-TOTAL: $17.75</p>
-            <p>TAX (6.5%): $1.78</p>
-            <p>TOTAL: $19.53</p>
+            <p>TOTAL NUMBER OF ITEMS SOLD: {totalProducts}</p>
+            <p>SUB-TOTAL: $ {subtotal}</p>
+            <p>TAX (6.5%):$ {tax}</p>
+            <p>TOTAL: $ {subtotal + tax}</p>
             <button>Proceed to Checkout</button>
         </div >
     )

@@ -13,8 +13,8 @@
         "photo":"/soda.png",
         "productName": "Red Bull",
         "stock": 10,
-        "regularPrice": 2.00,
-        "memberPrice": 4.00,
+        "regularPrice": 4.00,
+        "memberPrice": 2.00,
         "taxStatus": "Taxable"
     }
 ]
