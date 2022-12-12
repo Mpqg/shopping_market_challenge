@@ -1,7 +1,6 @@
 import "./ListProducts.css"
 import Product from './Product'
-import listProducts from '../data/products.json'
-function ListProducts({ cart, addcart, customertype, setcustomertype }) {
+function ListProducts({ cart, addcart, customertype, setcustomertype, products }) {
     const totalProducts = cart.reduce((acc, product) => {
         return acc + product.quantity
     }, 0);
@@ -14,7 +13,7 @@ function emptycart() {
             <table align='center'>
                 <thead>
                     <tr>
-                        <th>PHOTO</th>
+                        {/* <th>PHOTO</th> */}
                         <th>ITEM</th>
                         <th>STOCK</th>
                         <th>PRICE</th>
@@ -26,7 +25,7 @@ function emptycart() {
                     </tr>
                 </thead>
                 <tbody>
-                    {listProducts.map((product) => {
+                    {products.map((product) => {
                         return <Product
                             key={product.id}
                             cart={cart}

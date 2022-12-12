@@ -1,8 +1,6 @@
-
-import fs from 'fs';
-
-export default function readProducts(file_path) {
-    const productsContent = fs.readFileSync(file_path, 'utf8');
+export default async function readProducts() {
+    const productsContent = await fetch("/inventory.txt").then((response) => response.text());
+    
     const products = productsContent.split("\n").map((product) => {
         const name = product.slice(0, product.indexOf(":"));
         const productParts = product.split(",");
@@ -15,8 +13,8 @@ export default function readProducts(file_path) {
             id:name,
             name,
             inventory,
-            regularPrice,
-            memberPrice,
+            regularPrice: regularPrice.replace("$",""),
+            memberPrice: memberPrice.replace("$",""),
             taxStatus
         };
     });

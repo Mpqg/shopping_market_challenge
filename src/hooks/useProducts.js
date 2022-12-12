@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import readProducts from '../utils/readProducts';
+
 export default function useProducts() {
     const [products, setProducts] = useState([]);
 
@@ -38,8 +40,8 @@ export default function useProducts() {
     };
 
     useEffect(() => {
-        setProducts([]);
+        readProducts().then((productsList) => setProducts(productsList));
     }, []);
 
-    return { products, drawFromInventory , putBackInInventory, setProducts};
+    return { products, drawFromInventory, putBackInInventory, setProducts };
 }

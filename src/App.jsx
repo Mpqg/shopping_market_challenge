@@ -1,12 +1,13 @@
 import { useState } from 'react'
-import listProducts from './data/products.json'
 import TypeClient from './components/TypeClient'
 import ListProducts from './components/ListProducts'
 import ShoppingCart from './components/ShoppingCart';
 import './App.css'
 import Checkout from './components/Checkout';
+import useProducts from './hooks/useProducts';
 
 function App() {
+  const { products } = useProducts()
   const [cart, addCart] = useState([])
   const [customerType, setCustomerType] = useState("")
   const [currentProcess, setCurrentProcess] = useState("Shopping")
@@ -24,9 +25,14 @@ function App() {
   return (
     <div className="App">
       <h1 className="text_center"> Jerry's Quick Mart </h1>
-      <TypeClient customertype={customerType} setcustomer={setCustomerType}/>
-      <ListProducts cart={cart} addcart={addCart} customertype={customerType} setcustomertype={setCustomerType}/>
-      <ShoppingCart cart={cart} customertype={customerType} setcurrentprocess={setCurrentProcess}/>
+      <TypeClient customertype={customerType} setcustomer={setCustomerType} />
+      <ListProducts 
+        cart={cart}
+        addcart={addCart}
+        customertype={customerType}
+        setcustomertype={setCustomerType}
+        products={products} />
+      <ShoppingCart cart={cart} customertype={customerType} setcurrentprocess={setCurrentProcess} />
 
     </div>
   )

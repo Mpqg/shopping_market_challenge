@@ -36,9 +36,9 @@ function Product({ cart, product, customertype, addcart }) {
 
     return (
         <tr>
-            <td><img src={product.photo} alt="" width={80} /></td>
-            <td>{product.productName}</td>
-            <td>{product.stock - (product.quantity || 0)}</td>
+            {/* <td><img src={product.photo} alt="" width={80} /></td> */}
+            <td>{product.name}</td>
+            <td>{product.inventory - (product.quantity || 0)}</td>
             <td>${price}</td>
 
             <td>

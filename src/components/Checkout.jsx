@@ -41,7 +41,7 @@ function Checkout({ cart, customertype, addcart, setcurrentprocess }) {
                     {cart.map((product) => {
                         const price = customertype === "Rewards Members" ? product.memberPrice : product.regularPrice
                         return (<tr key={product.id}>
-                            <td>{product.productName}</td>
+                            <td>{product.name}</td>
                             <td>{product.quantity}</td>
                             <td>{price}</td>
                             <td>{price * product.quantity}</td>
