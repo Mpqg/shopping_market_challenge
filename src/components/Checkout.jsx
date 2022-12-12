@@ -1,7 +1,7 @@
 import "./Checkout.css"
 import { useState } from 'react'
 import generateReceipt from "../utils/generateReceipt"
-function Checkout({ cart, customertype, addcart, setcurrentprocess }) {
+function Checkout({ cart, customertype, addcart, setcurrentprocess, empty }) {
     const [cash, setCash] = useState(0.00)
     const totalProducts = cart.reduce((acc, product) => {
         return acc + product.quantity
@@ -25,7 +25,7 @@ function Checkout({ cart, customertype, addcart, setcurrentprocess }) {
         return acc + (price * product.quantity)
     }, 0)
     function emptycart() {
-        addcart([])
+        empty([])
         setcurrentprocess("ShoppingCart")
     }
     function checkout() {

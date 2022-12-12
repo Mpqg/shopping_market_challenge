@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import useProducts from './useProducts';
 export default function useCart() {
     const [cart, setCart] = useState([]);
@@ -33,30 +33,29 @@ export default function useCart() {
         }, 0);
     };
 
-    const increaseQuantity = (product) => {
+    const increaseQuantity = useCallback((product) => {
         drawFromInventory(product);
-        setCart((cart) => {
-            return cart.map((item) => {
-                if (item.id === product.id) {
-                    item.quantity = item.quantity + 1;
-                    return item;
-                }
+        const updatedCart = cart.map((item) => {
+            if (item.id === product.id) {
+                item.quantity = item.quantity + 1;
                 return item;
-            });
+            }
+            return item;
         });
-    };
+        setCart(updatedCart);
+    }, [drawFromInventory, cart]);
 
     const decreaseQuantity = (product) => {
         putBackInInventory(product);
-        setCart((cart) => {
-            return cart.map((item) => {
-                if (item.id === product.id) {
-                    item.quantity = item.quantity - 1;
-                    return item;
-                }
+        const updatedCart = cart.map((item) => {
+            if (item.id === product.id) {
+                item.quantity = item.quantity - 1 || 0;
                 return item;
-            });
-        });
+            }
+            return item;
+        }).filter((item) => item.quantity > 0);
+
+        setCart(updatedCart);
     };
 
     return {

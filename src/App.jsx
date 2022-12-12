@@ -18,7 +18,7 @@ function App() {
     return (
       <div className="App">
         <h1 className="text_center"> Jerry's Quick Mart </h1>
-        <Checkout cart={cart} customertype={customerType} addcart={addToCart} setcurrentprocess={setCurrentProcess} />
+        <Checkout cart={cart} customertype={customerType} addcart={addToCart} setcurrentprocess={setCurrentProcess} empty={emptyCart}/>
       </div>
     )
   }

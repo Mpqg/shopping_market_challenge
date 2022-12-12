@@ -8,14 +8,14 @@ function Product({ cart, product, customertype, addcart, increaseQuantity, decre
         <tr>
             {/* <td><img src={product.photo} alt="" width={80} /></td> */}
             <td>{product.name}</td>
-            <td>{product.inventory - (product.quantity || 0)}</td>
+            <td>{product.inventory - ((productInCart ? productInCart.quantity: 0) || 0)}</td>
             <td>${price}</td>
 
             <td>
                 {productInCart ? (
                     <div>
                         <button
-                            disabled={productInCart.quantity >= 0}
+                            disabled={productInCart.quantity === 0}
                             onClick={() => decreaseQuantity(product)}
                         >
                             -
