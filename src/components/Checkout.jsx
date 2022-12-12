@@ -1,7 +1,7 @@
 import "./Checkout.css"
 import { useState } from 'react'
 import listProducts from '../data/products.json'
-function Checkout({ cart, customertype, addcart }) {
+function Checkout({ cart, customertype, addcart, setcurrentprocess }) {
     const [cash, setCash] = useState(0.00)
     const totalProducts = cart.reduce((acc, product) => {
         return acc + product.quantity
@@ -23,6 +23,7 @@ function Checkout({ cart, customertype, addcart }) {
     }, 0)
     function emptycart() {
         addcart([]);
+        setcurrentprocess("ShoppingCart")
     }
     return (
         <div>

@@ -12,13 +12,21 @@ function App() {
   const [currentProcess, setCurrentProcess] = useState("Shopping")
   const [cash, setCash] = useState(0.00)
 
+  if (currentProcess === "Checkout") {
+    return (
+      <div className="App">
+        <h1 className="text_center"> Jerry's Quick Mart </h1>
+        <Checkout cart={cart} customertype={customerType} addcart={addCart} setcurrentprocess={setCurrentProcess} />
+      </div>
+    )
+  }
+
   return (
     <div className="App">
       <h1 className="text_center"> Jerry's Quick Mart </h1>
       <TypeClient customertype={customerType} setcustomer={setCustomerType}/>
       <ListProducts cart={cart} addcart={addCart} customertype={customerType} setcustomertype={setCustomerType}/>
-      <ShoppingCart cart={cart} customertype={customerType}/>
-      <Checkout cart={cart} customertype={customerType} addcart={addCart}/>
+      <ShoppingCart cart={cart} customertype={customerType} setcurrentprocess={setCurrentProcess}/>
 
     </div>
   )

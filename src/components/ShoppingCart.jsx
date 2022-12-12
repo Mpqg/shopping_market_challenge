@@ -1,4 +1,4 @@
-function ShoppingCart({ cart, customertype }) {
+function ShoppingCart({ cart, customertype, setcurrentprocess }) {
     const totalProducts = cart.reduce((acc, product) => {
         return acc + product.quantity
     }, 0)
@@ -40,7 +40,7 @@ function ShoppingCart({ cart, customertype }) {
             <p>SUB-TOTAL: $ {subtotal}</p>
             <p>TAX (6.5%):$ {tax}</p>
             <p>TOTAL: $ {subtotal + tax}</p>
-            <button>Proceed to Checkout</button>
+            <button onClick={() => setcurrentprocess("Checkout")}>Proceed to Checkout</button>
             </div>
         </div >
     )

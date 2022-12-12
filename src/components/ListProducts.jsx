@@ -6,7 +6,7 @@ function ListProducts({ cart, addcart, customertype, setcustomertype }) {
         return acc + product.quantity
     }, 0);
 function emptycart() {
-    addcart([]) && setcustomertype("");
+    addcart([]);
 }
     return (
         <div>
