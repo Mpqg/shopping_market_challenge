@@ -21,9 +21,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Built With
 
-- [Vite] https://vitejs.dev/ - Frontend Tooling for clean architecture
-- [Vercel] https://vercel.com/ - Deploying app
-- [Reactjs] https://reactjs.org/ - JavaScript runtime
+- [Vite](https://vitejs.dev/) - Frontend Tooling for clean architecture
+- [Vercel](https://vercel.com/) - Deploying app
+- [Reactjs](https://reactjs.org/) - JavaScript runtime
 - [Jest](https://jestjs.io/) - JavaScript testing framework
 
 ### Installing
