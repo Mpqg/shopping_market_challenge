@@ -13,8 +13,8 @@ export default async function readProducts() {
             id:name,
             name,
             inventory,
-            regularPrice: regularPrice.replace("$",""),
-            memberPrice: memberPrice.replace("$",""),
+            regularPrice: Number(regularPrice.replace("$","")),
+            memberPrice: Number(memberPrice.replace("$","")),
             taxStatus
         };
     });
