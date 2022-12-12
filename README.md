@@ -7,7 +7,7 @@ Welcome to Jerry's Quick Mart Challenge. This app is a quick solution for Jerry'
 - Select whether customer is a Rewars Member or Regular Customedr
 - Add items to cart
 - View cart (including totals)
-- Checkout and Print Receipt
+- Checkout and receive an alert of the Receipt
 - Cancel Transaction
 - Updated inventory in a .txt document
 
