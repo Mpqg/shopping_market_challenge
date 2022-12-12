@@ -26,12 +26,13 @@ function App() {
     <div className="App">
       <h1 className="text_center"> Jerry's Quick Mart </h1>
       <TypeClient customertype={customerType} setcustomer={setCustomerType} />
-      <ListProducts 
+      <ListProducts
         cart={cart}
         addcart={addCart}
         customertype={customerType}
         setcustomertype={setCustomerType}
-        products={products} />
+        products={products}
+      />
       <ShoppingCart cart={cart} customertype={customerType} setcurrentprocess={setCurrentProcess} />
 
     </div>

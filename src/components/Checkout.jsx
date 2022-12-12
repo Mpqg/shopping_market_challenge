@@ -25,7 +25,7 @@ function Checkout({ cart, customertype, addcart, setcurrentprocess }) {
         return acc + (price * product.quantity)
     }, 0)
     function emptycart() {
-        addcart([]);
+        addcart([])
         setcurrentprocess("ShoppingCart")
     }
     function checkout() {
@@ -33,7 +33,7 @@ function Checkout({ cart, customertype, addcart, setcurrentprocess }) {
             totalQuantity: totalProducts,
             subtotal: subtotal,
             tax: tax,
-            total: subtotal + tax,
+            total: (subtotal + tax),
             cash: cash,
             change: cash - (subtotal + tax),
             saving: saving,
@@ -61,19 +61,19 @@ function Checkout({ cart, customertype, addcart, setcurrentprocess }) {
                             <td>{product.name}</td>
                             <td>{product.quantity}</td>
                             <td>{price}</td>
-                            <td>{price * product.quantity}</td>
+                            <td>{Math.round((price * product.quantity) * 100) / 100}</td>
                         </tr>)
                     })}
                 </tbody>
             </table>
             <div className="text_center">
                 <p>TOTAL NUMBER OF ITEMS SOLD: {totalProducts}</p>
-                <p>SUB-TOTAL: $ {subtotal}</p>
-                <p>TAX (6.5%):$ {tax}</p>
-                <p>TOTAL: $ {subtotal + tax}</p>
+                <p>SUB-TOTAL: $ {Math.round((subtotal) * 100) / 100}</p>
+                <p>TAX (6.5%):$ {Math.round ((tax) * 100) / 100}</p>
+                <p>TOTAL: $ {Math.round((subtotal + tax) * 100) / 100}</p>
                 <p>CASH: $ <input type="number" value={cash} onChange={(event) => setCash(event.target.value)} /></p>
-                <p>CHANGE: $ {cash - (subtotal + tax)}</p>
-                <p>YOU SAVED: $ {saving}</p>
+                <p>CHANGE: $ {Math.round((cash - (subtotal + tax)) * 100) / 100}</p>
+                <p>YOU SAVED: $ {Math.round((saving) * 100) / 100}</p>
                 <button className="checkout" onClick={checkout}>Checkout</button>
                 <button onClick={emptycart}>Cancel</button>
             </div>

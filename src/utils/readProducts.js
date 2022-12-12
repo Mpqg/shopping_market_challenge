@@ -11,11 +11,11 @@ export default async function readProducts() {
 
         return {
             id:name,
-            name,
-            inventory,
+            name: name.trim(),
+            inventory: Number(inventory.trim()),
             regularPrice: Number(regularPrice.replace("$","")),
             memberPrice: Number(memberPrice.replace("$","")),
-            taxStatus
+            taxStatus: taxStatus.trim(),
         };
     });
     return products;

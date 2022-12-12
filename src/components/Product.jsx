@@ -51,7 +51,7 @@ function Product({ cart, product, customertype, addcart }) {
                             -
                         </button> {product.quantity}
                         <button
-                            disabled={product.stock === product.quantity}
+                            disabled={product.inventory === product.quantity}
                             onClick={() => addProduct(product.id)}
                         >
                             +

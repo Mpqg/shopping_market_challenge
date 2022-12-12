@@ -4,9 +4,9 @@ function ListProducts({ cart, addcart, customertype, setcustomertype, products }
     const totalProducts = cart.reduce((acc, product) => {
         return acc + product.quantity
     }, 0);
-function emptycart() {
-    addcart([]);
-}
+    function emptycart() {
+        addcart([])
+    }
     return (
         <div>
             <h2 className="text_center">List of products</h2>
@@ -19,7 +19,7 @@ function emptycart() {
                         <th>PRICE</th>
                         <th>
                             <img src="/icons8-carrito-de-compras-30.png" alt="" />{totalProducts}
-                            <img className="emptycart" src="/trash.png" alt="" width={30} onClick={emptycart}/>
+                            <img className="emptycart" src="/trash.png" alt="" width={30} onClick={emptycart} />
 
                         </th>
                     </tr>

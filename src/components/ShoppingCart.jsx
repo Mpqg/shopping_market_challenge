@@ -27,19 +27,19 @@ function ShoppingCart({ cart, customertype, setcurrentprocess }) {
                     {cart.map((product) => {
                         const price = customertype === "Rewards Members" ? product.memberPrice : product.regularPrice
                         return (<tr key={product.id}>
-                            <td>{product.productName}</td>
+                            <td>{product.name}</td>
                             <td>{product.quantity}</td>
-                            <td>{price}</td>
-                            <td>{price * product.quantity}</td>
+                            <td>$ {Math.round((price) * 100) /100}</td>
+                            <td>$ {Math.round((price * product.quantity) * 100) / 100}</td>
                         </tr>)
                     })}
                 </tbody>
             </table>
             <div className="text_center">
             <p>TOTAL NUMBER OF ITEMS SOLD: {totalProducts}</p>
-            <p>SUB-TOTAL: $ {subtotal}</p>
-            <p>TAX (6.5%):$ {tax}</p>
-            <p>TOTAL: $ {subtotal + tax}</p>
+            <p>SUB-TOTAL: $ {Math.round((subtotal) * 100) / 100}</p>
+            <p>TAX (6.5%):$ {Math.round((tax) * 100) / 100}</p>
+            <p>TOTAL: $ {Math.round((subtotal + tax) * 100) / 100}</p>
             <button onClick={() => setcurrentprocess("Checkout")}>Proceed to Checkout</button>
             </div>
         </div >
