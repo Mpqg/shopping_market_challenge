@@ -1,11 +1,9 @@
 import "./ListProducts.css"
 import Product from './Product'
-function ListProducts({ cart, addcart, customertype, setcustomertype, products }) {
-    const totalProducts = cart.reduce((acc, product) => {
-        return acc + product.quantity
-    }, 0);
+function ListProducts({ cart, addcart, customertype, setcustomertype, products, increaseQuantity, decreaseQuantity, removeFromCart, emptyCart, getCartLength }) {
+    
     function emptycart() {
-        addcart([])
+        emptyCart([])
     }
     return (
         <div>
@@ -18,7 +16,7 @@ function ListProducts({ cart, addcart, customertype, setcustomertype, products }
                         <th>STOCK</th>
                         <th>PRICE</th>
                         <th>
-                            <img src="/icons8-carrito-de-compras-30.png" alt="" />{totalProducts}
+                            <img src="/icons8-carrito-de-compras-30.png" alt="" />{getCartLength()}
                             <img className="emptycart" src="/trash.png" alt="" width={30} onClick={emptycart} />
 
                         </th>
@@ -32,6 +30,10 @@ function ListProducts({ cart, addcart, customertype, setcustomertype, products }
                             customertype={customertype}
                             product={product}
                             addcart={addcart}
+                            increaseQuantity={increaseQuantity}
+                            decreaseQuantity={decreaseQuantity}
+                            removeFromCart={removeFromCart}
+                            
                         />
                     })}
                 </tbody>

@@ -1,38 +1,8 @@
 import React, { useState } from 'react'
-function Product({ cart, product, customertype, addcart }) {
-    const [quantity, setQuantity] = useState(1)
+function Product({ cart, product, customertype, addcart, increaseQuantity, decreaseQuantity, removeFromCart }) {
     const price = customertype === "Rewards Members" ? product.memberPrice : product.regularPrice
-    const isInCart = cart.find((item) => item.id === product.id)
+    const productInCart = cart.find((item) => item.id === product.id)
 
-    const addProduct = (productId) => {
-        const updatedCart = cart.map((product)=> {
-            if (product.id == productId) {
-                product.quantity++
-            }
-            return (product);
-        })
-        addcart(updatedCart);
-     }
-     const addProductBag = (product) => {
-        product.quantity = 1;
-        addcart([...cart, product])
-     }
-    const removeProduct = (productId) => {
-        let shouldRemoveProduct =  false
-        let updatedCart = cart.map((product)=> {
-            if (product.id == productId) {
-                product.quantity--
-                if (product.quantity === 0) {
-                    shouldRemoveProduct = true
-                }
-            }
-            return (product);
-        })
-        if (shouldRemoveProduct) {
-            updatedCart = updatedCart.filter((product) => product.id !== productId)
-        }
-        addcart(updatedCart);
-    }
 
     return (
         <tr>
@@ -42,17 +12,17 @@ function Product({ cart, product, customertype, addcart }) {
             <td>${price}</td>
 
             <td>
-                {isInCart ? (
+                {productInCart ? (
                     <div>
                         <button
-                            disabled={product.quantity === 0}
-                            onClick={() => removeProduct(product.id)}
+                            disabled={productInCart.quantity >= 0}
+                            onClick={() => decreaseQuantity(product)}
                         >
                             -
-                        </button> {product.quantity}
+                        </button> {productInCart.quantity}
                         <button
-                            disabled={product.inventory === product.quantity}
-                            onClick={() => addProduct(product.id)}
+                            disabled={product.inventory === productInCart.quantity}
+                            onClick={() => increaseQuantity(product)}
                         >
                             +
                         </button>
@@ -60,7 +30,7 @@ function Product({ cart, product, customertype, addcart }) {
                 )
                     : (
                         <button
-                            onClick={() => addProductBag(product)}
+                            onClick={() => addcart(product)}
                         >
                             add to cart
                         </button>
